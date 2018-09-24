@@ -2,3 +2,4 @@ node_modules
 .expo
 .next
 .ds_store
+*.log
