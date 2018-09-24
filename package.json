@@ -1,6 +1,12 @@
 {
   "name": "food-calc",
+  "description": "a food logger because none of them do net carbs correctly",
+  "repository": "https://github.com/mcansh/food-calc",
+  "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev:web": "yarn workspace @food-calc/web dev",
     "start:ios": "yarn workspace @food-calc/app ios",

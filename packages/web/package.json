@@ -1,9 +1,6 @@
 {
   "name": "@food-calc/web",
-  "version": "1.0.0",
-  "description": "a food logger because none of them do net carbs correctly",
-  "repository": "https://github.com/mcansh/food-calc",
-  "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
+  "version": "1.0.0-canary.0",
   "license": "MIT",
   "dependencies": {
     "babel-plugin-styled-components": "latest",
