@@ -1,8 +1,4 @@
 {
-  "name": "food-calc",
-  "description": "a food logger because none of them do net carbs correctly",
-  "repository": "https://github.com/mcansh/food-calc",
-  "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -25,5 +21,8 @@
     "jest": "23.6.0",
     "lerna": "3.4.0",
     "prettier": "1.14.3"
+  },
+  "resolutions": {
+    "graphql": "^0.13.1"
   }
 }
