@@ -1,0 +1,61 @@
+# import * from './generated/prisma.graphql'
+
+
+type Mutation {
+  createItem(
+    title: String!,
+    description: String,
+    image: String,
+    largeImage: String,
+    upc: String!
+    brand: String!
+    category: String!
+    serving: String!
+    servingSize: Int!
+    servingsPerContainer: Int
+    servingSizeInGrams: Boolean
+    calories: Float!
+    protein: Float!
+    carbs: Float!
+    fat: Float!
+    satFat: Float
+    unsatFat: Float
+    fiber: Float
+    sugar: Float
+    sodium: Float
+    cholesterol: Float
+    potassium: Float
+    sugarAlcohol: Float
+  ): Item!,
+
+  updateItem(
+    id: ID!,
+    title: String,
+    description: String,
+    image: String,
+    largeImage: String,
+    upc: String,
+    brand: String,
+    category: String,
+    serving: String,
+    servingSize: Int,
+    servingsPerContainer: Int,
+    servingSizeInGrams: Boolean,
+    calories: Float,
+    protein: Float,
+    carbs: Float,
+    fat: Float,
+    satFat: Float,
+    unsatFat: Float,
+    fiber: Float,
+    sugar: Float,
+    sodium: Float,
+    cholesterol: Float,
+    potassium: Float,
+    sugarAlcohol: Float,
+  ): Item!,
+}
+
+type Query {
+  items: [Item]!
+}
