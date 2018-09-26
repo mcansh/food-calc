@@ -1,28 +1,19 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import Router from 'next/router';
+import { ThemeProvider } from 'styled-components';
+import { ApolloProvider } from 'react-apollo';
+import NProgress from 'nprogress';
+import withData from '../lib/withData';
 import theme from '../config';
+import GlobalStyles from '../components/GlobalStyles';
 
-const GlobalStyles = createGlobalStyle`
-  html {
-    font-size: 10px;
-    box-sizing: border-box;
-  }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-    margin: 0;
-  }
-
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  }
-`;
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
+  static getInitialProps = async ({ Component, ctx }) => {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -30,22 +21,22 @@ class MyApp extends App {
     }
 
     return { pageProps };
-  }
+  };
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, apolloClient } = this.props;
 
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <>
+          <ApolloProvider client={apolloClient}>
             <GlobalStyles />
             <Component {...pageProps} />
-          </>
+          </ApolloProvider>
         </ThemeProvider>
       </Container>
     );
   }
 }
 
-export default MyApp;
+export default withData(MyApp);
