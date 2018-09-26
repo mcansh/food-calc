@@ -1,4 +1,35 @@
 type User {
   id: ID! @unique
   name: String!
+  email: String! @unique
+  username: String! @unique
+}
+
+type Item {
+  id: ID! @unique
+  title: String!
+  description: String
+  image: String
+  largeImage: String
+  upc: String! @unique
+  brand: String!
+  category: String!
+  serving: String!
+  servingSize: Int!
+  servingsPerContainer: Int
+  servingSizeInGrams: Boolean
+
+  calories: Float!
+  protein: Float!
+  carbs: Float!
+  fat: Float!
+  satFat: Float
+  unsatFat: Float
+  fiber: Float
+  sugar: Float
+  sodium: Float
+  cholesterol: Float
+  potassium: Float
+  sugarAlcohol: Float
+  # user: User!
 }
