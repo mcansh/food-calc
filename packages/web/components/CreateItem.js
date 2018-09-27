@@ -147,7 +147,7 @@ class CreateItem extends React.Component {
             onChange={this.handleChange}
             required
           />
-          {/* <Input
+          <Input
             text="grams (g)"
             type="radio"
             name="servingSizeInGrams"
@@ -161,7 +161,7 @@ class CreateItem extends React.Component {
             id="servingSizeInGrams-ml"
             checked={!servingSizeInGrams}
             onChange={this.handleChange}
-          /> */}
+          />
         </form>
       </>
     );

@@ -1,52 +1,19 @@
-import React from 'react';
-import Head from 'next/head';
-import { getDataFromTree } from 'react-apollo';
-import initApollo from './initApollo';
+import withApollo from 'next-with-apollo';
+import ApolloClient from 'apollo-boost';
+import { endpoint } from '../config';
 
-export default App =>
-  class Apollo extends React.Component {
-    static displayName = 'withApollo(App)';
+function createClient({ headers }) {
+  return new ApolloClient({
+    uri: process.env.NODE_ENV === 'development' ? endpoint : endpoint,
+    request: operation => {
+      operation.setContext({
+        fetchOptions: {
+          credentials: 'include',
+        },
+        headers,
+      });
+    },
+  });
+}
 
-    static async getInitialProps(ctx) {
-      const { Component, router } = ctx;
-
-      let appProps = {};
-      if (App.getInitialProps) {
-        appProps = await App.getInitialProps(ctx);
-      }
-
-      const apollo = initApollo();
-      if (!process.browser) {
-        try {
-          await getDataFromTree(
-            <App
-              {...appProps}
-              Component={Component}
-              router={router}
-              apolloClient={apollo}
-            />
-          );
-        } catch (error) {
-          console.error('Error while running `getDataFromTree`', error);
-        }
-
-        Head.rewind();
-      }
-
-      const apolloState = apollo.cache.extract();
-
-      return {
-        ...appProps,
-        apolloState,
-      };
-    }
-
-    constructor(props) {
-      super(props);
-      this.apolloClient = initApollo(props.apolloState);
-    }
-
-    render() {
-      return <App {...this.props} apolloClient={this.apolloClient} />;
-    }
-  };
+export default withApollo(createClient);

@@ -24,12 +24,12 @@ class MyApp extends App {
   };
 
   render() {
-    const { Component, pageProps, apolloClient } = this.props;
+    const { Component, pageProps, apollo } = this.props;
 
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <ApolloProvider client={apolloClient}>
+          <ApolloProvider client={apollo}>
             <GlobalStyles />
             <Component {...pageProps} />
           </ApolloProvider>
