@@ -18,7 +18,7 @@
     "bcryptjs": "2.4.3",
     "cookie-parser": "1.4.3",
     "dotenv": "6.0.0",
-    "esm": "3.0.84",
+    "esm": "3.2.25",
     "graphql": "14.0.2",
     "graphql-yoga": "1.16.2",
     "jsonwebtoken": "8.3.0",
